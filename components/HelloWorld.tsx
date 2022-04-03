@@ -1,16 +1,13 @@
 import React, { ReactNode } from 'react';
 
 export interface HelloWorldProps {
-  children?: ReactNode;
   className?: string;
-  verbose?: boolean;
 }
 
-export function HelloWorld({ children, className, verbose }: HelloWorldProps) {
+export function HelloWorld({ className }: HelloWorldProps) {
   return (
     <div className={className} style={{ padding: '20px' }}>
-      <p>Hello there! {verbose && 'Really nice to meet you!'}</p>
-      <div>{children}</div>
+      <p>Hello there! </p>
     </div>
   );
 }
