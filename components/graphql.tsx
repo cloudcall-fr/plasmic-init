@@ -13,18 +13,23 @@ export function GraphqlFetcher({
   children?: ReactNode;
   className?: string;
 }) {
-  const data = usePlasmicQueryData<any[] | null>(
-    JSON.stringify({ type }),
+  const {data} = usePlasmicQueryData<any[] | null>(
+    type? JSON.stringify({ type }) : "id",
     async () => {
       return getI18nStrings();
     }
   );
-  if (!data?.data) {
+  
+  if (!data) {
+    return null;
+  }
+
+  if (!data) {
     return <div>Please specify a field type.</div>;
   }
   return (
     <div className={className}>
-      {data?.data.map((item, index) => (
+      {data.map((item, index) => (
         <DataProvider key={item.id} name={"graphqlItem"} data={item}>
           {repeatedElement(index === 0, children)}
         </DataProvider>
