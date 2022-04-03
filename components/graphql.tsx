@@ -14,7 +14,7 @@ export function GraphqlFetcher({
   className?: string;
 }) {
   const {data} = usePlasmicQueryData<any[] | null>(
-    type? JSON.stringify({ type }) : "id",
+    JSON.stringify({ type }),
     async () => {
       return getI18nStrings();
     }
