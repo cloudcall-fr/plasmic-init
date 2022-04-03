@@ -1,4 +1,5 @@
 import { initPlasmicLoader } from "@plasmicapp/loader-nextjs";
+import { GraphqlFetcher, GraphqlField } from "./components/graphql";
 import { HelloWorld } from './components/HelloWorld';
 
 export const PLASMIC = initPlasmicLoader({
@@ -28,4 +29,32 @@ PLASMIC.registerComponent(HelloWorld, {
   props: {
     msg: 'string',
   }
+});
+
+PLASMIC.registerComponent(GraphqlFetcher, {
+  name: "GraphqlFetcher",
+  props: {
+    children: {
+      type: "slot",
+      defaultValue: {
+        type: "vbox",
+        children: [
+          {
+            type: "component",
+            name: "GraphqlField",
+          },
+        ],
+      },
+    },
+  },
+});
+
+PLASMIC.registerComponent(GraphqlField, {
+  name: "GraphqlField",
+  props: {
+    path: {
+      type: "choice",
+      options: (props, ctx) => ctx.fields,
+    },
+  },
 });
