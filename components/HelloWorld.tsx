@@ -8,7 +8,7 @@ export interface HelloWorldProps {
 export function HelloWorld({ className, msg }: HelloWorldProps) {
   return (
     <div className={className} style={{ padding: '20px' }}>
-      <p>{msg ? "Hello there!" : msg}</p>
+      <p>{msg ? msg : "Hello there!"}</p>
     </div>
   );
 }
