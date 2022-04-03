@@ -31,5 +31,5 @@ export async function getI18nStrings() {
     entries = response?.data?.string;
   } catch (error) {
   }
-  return [{code: "code", value: "value", id: 1}];
+  return entries;
 }
