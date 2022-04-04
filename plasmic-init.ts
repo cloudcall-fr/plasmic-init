@@ -1,5 +1,5 @@
 import { initPlasmicLoader } from "@plasmicapp/loader-nextjs";
-import { GraphqlFetcher, GraphqlField } from "./components/graphql";
+import { ContentfulFetcher, ContentfulField } from "./components/contentful";
 
 export const PLASMIC = initPlasmicLoader({
   projects: [
@@ -23,8 +23,8 @@ export const PLASMIC = initPlasmicLoader({
 // http://localhost:3000/plasmic-host).  See
 // https://docs.plasmic.app/learn/app-hosting/#set-a-plasmic-project-to-use-your-app-host
 
-PLASMIC.registerComponent(GraphqlFetcher, {
-  name: "GraphqlFetcher",
+PLASMIC.registerComponent(ContentfulFetcher, {
+  name: "ContentfulFetcher",
   props: {
     children: {
       type: "slot",
@@ -33,7 +33,7 @@ PLASMIC.registerComponent(GraphqlFetcher, {
         children: [
           {
             type: "component",
-            name: "GraphqlField",
+            name: "ContentfulField",
           },
         ],
       },
@@ -41,8 +41,8 @@ PLASMIC.registerComponent(GraphqlFetcher, {
   },
 });
 
-PLASMIC.registerComponent(GraphqlField, {
-  name: "GraphqlField",
+PLASMIC.registerComponent(ContentfulField, {
+  name: "ContentfulField",
   props: {
     path: {
       type: "choice",
