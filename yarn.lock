@@ -180,7 +180,14 @@
   resolved "https://registry.yarnpkg.com/@plasmicapp/preamble/-/preamble-0.0.64.tgz#8a284162d5688b6ab8184098e89bbf6d352c90c3"
   integrity sha512-qKhr4suLfBDAzpoRNVm2ZY7xJzZBUHoiuXgLzuEpBn+AHQpM2XRlhwRf7+z2iWozf6DA2qR8C5Uj27EFD7JR9g==
 
-"@plasmicapp/query@0.1.41", "@plasmicapp/query@^0.1.28":
+"@plasmicapp/query@0.1.28":
+  version "0.1.28"
+  resolved "https://registry.yarnpkg.com/@plasmicapp/query/-/query-0.1.28.tgz#994cbd587e11b8a8ff1f1e8eb42afbe0aa4062ab"
+  integrity sha512-h4qQRkgn0lYnogeay5zejws6GJXqYxqvGFrr9sNL+TTcQcOP121WfBy5w0EooUfGLF3oFXBMH14c8BEvuObxzw==
+  dependencies:
+    react-ssr-prepass "^1.4.0"
+
+"@plasmicapp/query@0.1.41":
   version "0.1.41"
   resolved "https://registry.yarnpkg.com/@plasmicapp/query/-/query-0.1.41.tgz#4640031abadde5a11575c41ca42a483caa3b51be"
   integrity sha512-Nj8m8gK354cHqgpvfZ3xvMY0ESZia89H7Sc6xSJi6+grurhUYq6reCab67lZdwS3JUPpvIkcgQrBsMiPc+NB9g==
@@ -428,9 +435,9 @@ callsites@^3.0.0:
   integrity sha512-P8BjAsXvZS+VIDUI11hHCQEv74YT67YUi5JJFNWIqL235sBmjX4+qx9Muvls5ivyNENctx46xQLQ3aTuE7ssaQ==
 
 caniuse-lite@^1.0.30001283:
-  version "1.0.30001324"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001324.tgz#e17c3a8b34822b02d5d15639d570057550074884"
-  integrity sha512-/eYp1J6zYh1alySQB4uzYFkLmxxI8tk0kxldbNHXp8+v+rdMKdUBNjRLz7T7fz6Iox+1lIdYpc7rq6ZcXfTukg==
+  version "1.0.30001325"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001325.tgz#2b4ad19b77aa36f61f2eaf72e636d7481d55e606"
+  integrity sha512-sB1bZHjseSjDtijV1Hb7PB2Zd58Kyx+n/9EotvZ4Qcz2K3d0lWB8dB4nb8wN/TsOGFq3UuAm0zQZNQ4SoR7TrQ==
 
 chalk@^4.0.0:
   version "4.1.2"
