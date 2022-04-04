@@ -24,13 +24,16 @@ async function fetchGraphQL(query: string) {
   ).then((response) => response.json());
 }
 
-export async function getStrings(): Promise<any[] | null> {
+export async function getStrings() {
   let entries: any[] | null = null;
   try {
     const response = await fetchGraphQL(GRAPHQL_QUERY);
     entries = response?.data?.string;
+    console.log("entries", entries);
+    return entries;
   }
   catch (error) {
+    console.log("error");
+    return { error, data: null };
   }
-  return entries;
 }

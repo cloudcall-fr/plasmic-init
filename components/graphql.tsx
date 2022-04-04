@@ -1,7 +1,7 @@
 import { DataProvider, repeatedElement, useSelector } from "@plasmicapp/host";
 import { usePlasmicQueryData } from "@plasmicapp/query";
 import L from "lodash";
-import { ReactNode } from "react";
+import { Key, ReactNode } from "react";
 import { getStrings } from "../lib/api";
 
 export function GraphqlFetcher({
@@ -9,22 +9,23 @@ export function GraphqlFetcher({
   children,
   className,
 }: {
-  type?: string;
+  type: string;
   children?: ReactNode;
   className?: string;
 }) {
-  const data = usePlasmicQueryData<any[] | null>(
-    JSON.stringify({ type }),
+  const data = usePlasmicQueryData<any>(
+    type,
     async () => {
-      return getStrings() ;
+      return getStrings();
     }
   );
+
   if (!data?.data) {
     return <div>Please specify a field type.</div>;
   }
   return (
     <div className={className}>
-      {data?.data?.map((item, index) => (
+      {data?.data?.map((item: { id: Key }, index: number) => (
         <DataProvider key={item.id} name={"graphqlItem"} data={item}>
           {repeatedElement(index === 0, children)}
         </DataProvider>

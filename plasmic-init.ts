@@ -26,6 +26,10 @@ export const PLASMIC = initPlasmicLoader({
 PLASMIC.registerComponent(GraphqlFetcher, {
   name: "GraphqlFetcher",
   props: {
+    type: {
+      type: "string",
+      defaultValue: "id",
+    },
     children: {
       type: "slot",
       defaultValue: {
