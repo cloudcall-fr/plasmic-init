@@ -13,8 +13,8 @@ export function GraphqlFetcher({
   children?: ReactNode;
   className?: string;
 }) {
-  const data = usePlasmicQueryData<any>(
-    type,
+  const data = usePlasmicQueryData<any[] | null>(
+    JSON.stringify({ type }),
     async () => {
       return getStrings();
     }

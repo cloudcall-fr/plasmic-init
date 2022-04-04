@@ -12,7 +12,7 @@ query {
 `;
 
 async function fetchGraphQL(query: string) {
-  return fetch(
+  const response = await fetch(
     `${process.env.API_ENDPOINT}`,
     {
       method: "POST",
@@ -21,7 +21,8 @@ async function fetchGraphQL(query: string) {
       },
       body: JSON.stringify({ query }),
     }
-  ).then((response) => response.json());
+  )
+  return response.json();
 }
 
 export async function getStrings() {
@@ -29,11 +30,9 @@ export async function getStrings() {
   try {
     const response = await fetchGraphQL(GRAPHQL_QUERY);
     entries = response?.data?.string;
-    console.log("entries", entries);
     return entries;
   }
   catch (error) {
-    console.log("error");
-    return { error, data: null };
+    return [{id: 1, code: "code", value: "value"}];
   }
 }
