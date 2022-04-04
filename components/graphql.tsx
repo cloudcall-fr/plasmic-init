@@ -4,7 +4,7 @@ import L from "lodash";
 import { ReactNode } from "react";
 import { getStrings } from "../lib/api";
 
-export function GqlFetcher({
+export function GraphqlFetcher({
   type,
   children,
   className,
