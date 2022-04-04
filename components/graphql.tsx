@@ -21,7 +21,7 @@ export function GraphqlFetcher({
   );
   console.log("!", data);
   if (!data?.data) {
-    return <div>Please specify a collection.</div>;
+    return null;
   }
   return (
     <div className={className}>
