@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@plasmicapp/loader-nextjs": "^1.0.93",
+    "@plasmicapp/query": "^0.1.28",
     "@types/lodash": "^4.14.181",
     "lodash": "^4.17.21",
     "next": "12.1.4",

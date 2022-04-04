@@ -180,7 +180,7 @@
   resolved "https://registry.yarnpkg.com/@plasmicapp/preamble/-/preamble-0.0.64.tgz#8a284162d5688b6ab8184098e89bbf6d352c90c3"
   integrity sha512-qKhr4suLfBDAzpoRNVm2ZY7xJzZBUHoiuXgLzuEpBn+AHQpM2XRlhwRf7+z2iWozf6DA2qR8C5Uj27EFD7JR9g==
 
-"@plasmicapp/query@0.1.41":
+"@plasmicapp/query@0.1.41", "@plasmicapp/query@^0.1.28":
   version "0.1.41"
   resolved "https://registry.yarnpkg.com/@plasmicapp/query/-/query-0.1.41.tgz#4640031abadde5a11575c41ca42a483caa3b51be"
   integrity sha512-Nj8m8gK354cHqgpvfZ3xvMY0ESZia89H7Sc6xSJi6+grurhUYq6reCab67lZdwS3JUPpvIkcgQrBsMiPc+NB9g==

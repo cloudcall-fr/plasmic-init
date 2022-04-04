@@ -1,8 +1,8 @@
-process.env.API_ENDPOINT="https://api-dev.cloudcall.fr/v1/graphql";
+process.env.API_ENDPOINT = "https://api-dev.cloudcall.fr/v1/graphql";
 
 const GRAPHQL_QUERY = `
 query {
-  string {
+  string(limit: 10) {
     id
     code
     language
@@ -24,12 +24,13 @@ async function fetchGraphQL(query: string) {
   ).then((response) => response.json());
 }
 
-export async function getI18nStrings() {
-  let entries = null;
+export async function getStrings(): Promise<any[] | null> {
+  let entries: any[] | null = null;
   try {
-    const response = await fetchGraphQL( GRAPHQL_QUERY );
+    const response = await fetchGraphQL(GRAPHQL_QUERY);
     entries = response?.data?.string;
-  } catch (error) {
+  }
+  catch (error) {
   }
   return entries;
 }

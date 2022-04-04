@@ -2,7 +2,7 @@ import { DataProvider, repeatedElement, useSelector } from "@plasmicapp/host";
 import { usePlasmicQueryData } from "@plasmicapp/query";
 import L from "lodash";
 import { ReactNode } from "react";
-import { getI18nStrings } from "../lib/api";
+import { getStrings } from "../lib/api";
 
 export function GraphqlFetcher({
   type,
@@ -13,23 +13,18 @@ export function GraphqlFetcher({
   children?: ReactNode;
   className?: string;
 }) {
-  const {data} = usePlasmicQueryData<any[] | null>(
+  const data = usePlasmicQueryData<any[] | null>(
     JSON.stringify({ type }),
     async () => {
-      return getI18nStrings();
+      return getStrings() ;
     }
   );
-  
-  if (!data) {
-    return null;
-  }
-
-  if (!data) {
+  if (!data?.data) {
     return <div>Please specify a field type.</div>;
   }
   return (
     <div className={className}>
-      {data.map((item, index) => (
+      {data?.data?.map((item, index) => (
         <DataProvider key={item.id} name={"graphqlItem"} data={item}>
           {repeatedElement(index === 0, children)}
         </DataProvider>
@@ -56,9 +51,5 @@ export function GraphqlField({
     return <div>ContentfulField must specify a path.</div>;
   }
   const data = L.get(item, path);
-  if (data?.url) {
-    return <img src={data.url} />;
-  } else {
-    return <div className={className}>{data}</div>;
-  }
+  return <div className={className}>{data}</div>;
 }
