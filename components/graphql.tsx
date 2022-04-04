@@ -1,15 +1,15 @@
 import { DataProvider, repeatedElement, useSelector } from "@plasmicapp/host";
 import { usePlasmicQueryData } from "@plasmicapp/query";
 import L from "lodash";
-import { Key, ReactNode } from "react";
+import { ReactNode } from "react";
 import { getStrings } from "../lib/api";
 
-export function GraphqlFetcher({
+export function GqlFetcher({
   type,
   children,
   className,
 }: {
-  type: string;
+  type?: string;
   children?: ReactNode;
   className?: string;
 }) {
@@ -19,14 +19,14 @@ export function GraphqlFetcher({
       return getStrings();
     }
   );
-
+  console.log("!", data);
   if (!data?.data) {
-    return <div>Please specify a field type.</div>;
+    return <div>Please specify a collection.</div>;
   }
   return (
     <div className={className}>
-      {data?.data?.map((item: { id: Key }, index: number) => (
-        <DataProvider key={item.id} name={"graphqlItem"} data={item}>
+      {data?.data.map((item, index) => (
+        <DataProvider key={item.id} name={"gqlItem"} data={item}>
           {repeatedElement(index === 0, children)}
         </DataProvider>
       ))}
@@ -34,7 +34,7 @@ export function GraphqlFetcher({
   );
 }
 
-export function GraphqlField({
+export function GqlField({
   className,
   path,
   setControlContextData,
@@ -43,14 +43,18 @@ export function GraphqlField({
   path?: string;
   setControlContextData: (data: any) => void;
 }) {
-  const item = useSelector("graphqlItem");
+  const item = useSelector("gqlItem");
   if (!item) {
-    return <div>ContentfulField must be used within a ContentfulFetcher</div>;
+    return <div>GqlField must be used within a GqlFetcher</div>;
   }
   setControlContextData?.({ fields: Object.keys(item) });
   if (!path) {
-    return <div>ContentfulField must specify a path.</div>;
+    return <div>GqlField must specify a path.</div>;
   }
   const data = L.get(item, path);
-  return <div className={className}>{data}</div>;
+  if (data?.url) {
+    return <img src={data.url} />;
+  } else {
+    return <div className={className}>{data}</div>;
+  }
 }

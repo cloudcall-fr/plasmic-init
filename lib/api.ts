@@ -1,6 +1,6 @@
 process.env.API_ENDPOINT = "https://api-dev.cloudcall.fr/v1/graphql";
 
-const GRAPHQL_QUERY = `
+const GQL_QUERY = `
 query {
   string(limit: 10) {
     id
@@ -11,8 +11,8 @@ query {
 }
 `;
 
-async function fetchGraphQL(query: string) {
-  const response = await fetch(
+async function fetchGql(query: string) {
+  return fetch(
     `${process.env.API_ENDPOINT}`,
     {
       method: "POST",
@@ -21,18 +21,15 @@ async function fetchGraphQL(query: string) {
       },
       body: JSON.stringify({ query }),
     }
-  )
-  return response.json();
+  ).then((response) => response.json());
+}
+
+function extractEntries(fetchResponse: any) {
+  console.log("!!", fetchResponse.errors);
+  return fetchResponse?.data.string;
 }
 
 export async function getStrings() {
-  let entries: any[] | null = null;
-  try {
-    const response = await fetchGraphQL(GRAPHQL_QUERY);
-    entries = response?.data?.string;
-    return entries;
-  }
-  catch (error) {
-    return [{id: 1, code: "code", value: "value"}];
-  }
+  const entries = await fetchGql(GQL_QUERY);
+  return extractEntries(entries);
 }
