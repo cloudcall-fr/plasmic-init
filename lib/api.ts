@@ -1,6 +1,6 @@
 process.env.API_ENDPOINT = "https://api-dev.cloudcall.fr/v1/graphql";
 
-const GQL_QUERY = `
+const GRAPHQL_QUERY = `
 query {
   string(limit: 10) {
     id
@@ -11,7 +11,7 @@ query {
 }
 `;
 
-async function fetchGql(query: string) {
+async function fetchGraphql(query: string) {
   return fetch(
     `${process.env.API_ENDPOINT}`,
     {
@@ -30,6 +30,6 @@ function extractEntries(fetchResponse: any) {
 }
 
 export async function getStrings() {
-  const entries = await fetchGql(GQL_QUERY);
+  const entries = await fetchGraphql(GRAPHQL_QUERY);
   return extractEntries(entries);
 }

@@ -4,7 +4,7 @@ import L from "lodash";
 import { ReactNode } from "react";
 import { getStrings } from "../lib/api";
 
-export function GqlFetcher({
+export function GraphqlFetcher({
   type,
   children,
   className,
@@ -26,7 +26,7 @@ export function GqlFetcher({
   return (
     <div className={className}>
       {data?.data.map((item, index) => (
-        <DataProvider key={item.id} name={"gqlItem"} data={item}>
+        <DataProvider key={item.id} name={"graphqlItem"} data={item}>
           {repeatedElement(index === 0, children)}
         </DataProvider>
       ))}
@@ -34,7 +34,7 @@ export function GqlFetcher({
   );
 }
 
-export function GqlField({
+export function GraphqlField({
   className,
   path,
   setControlContextData,
@@ -43,13 +43,13 @@ export function GqlField({
   path?: string;
   setControlContextData: (data: any) => void;
 }) {
-  const item = useSelector("gqlItem");
+  const item = useSelector("graphqlItem");
   if (!item) {
-    return <div>GqlField must be used within a GqlFetcher</div>;
+    return <div>GraphqlField must be used within a GraphqlFetcher</div>;
   }
   setControlContextData?.({ fields: Object.keys(item) });
   if (!path) {
-    return <div>GqlField must specify a path.</div>;
+    return <div>GraphqlField must specify a path.</div>;
   }
   const data = L.get(item, path);
   if (data?.url) {
